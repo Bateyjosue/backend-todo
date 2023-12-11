@@ -15,7 +15,8 @@ export class TaskService {
   async getTask(id: { id: string }) {
     const tasks: TaskDto[] = await this.db.getData('/db/task/data/');
 
-    return tasks.find((task) => task.id === id.id);
+    const index = tasks.findIndex((task) => task.id === id.id);
+    return await this.db.getData(`/db/task/data[${index}]`);
   }
   async addTask(task: TaskDto) {
     const categoryData = await this.db.getData('/db/category/data/');
