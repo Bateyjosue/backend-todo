@@ -4,7 +4,7 @@
       "data": [
         {
           "id": "091",
-          "title":"title",
+          "title": "title",
           "status": "status",
           "description": "description",
           "categoryId": "category"
@@ -14,9 +14,10 @@
     "category": {
       "data": [
         {
-          "id": "001",
-          "name": "Category"
-        }
+          "id": "cb6d9fa4-8b2b-41b7-ab39-f77006fa312a",
+          "name": "Category one"
+        },
+        { "id": "d97e36da-06e1-4581-b8ca-08c8cd9e99fe", "name": "Category two" }
       ]
     }
   }
