@@ -16,6 +16,9 @@ export class TaskService {
     const tasks: TaskDto[] = await this.db.getData('/db/task/data/');
 
     const index = tasks.findIndex((task) => task.id === id.id);
+    if (index == -1) {
+      throw new ForbiddenException('Task not found');
+    }
     return await this.db.getData(`/db/task/data[${index}]`);
   }
   async addTask(task: TaskDto) {
@@ -44,7 +47,10 @@ export class TaskService {
     }
   }
 
-  deleteTask(id) {
-    console.log(id);
+  async deleteTask(id) {
+    const tasks: TaskDto[] = await this.db.getData('/db/task/data/');
+
+    const index = tasks.findIndex((task) => task.id === id.id);
+    return await this.db.delete(`/db/task/data[${index}]`);
   }
 }
