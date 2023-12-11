@@ -11,6 +11,7 @@ export class CategoryService {
     const data = await this.db.getData('/db/category/data/');
     return data;
   }
+
   async addCategory(category: Category) {
     try {
       await this.db.push('/db/category/data[]', {
