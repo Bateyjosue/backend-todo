@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 
-enum TASKSTATUS {
+export enum TASKSTATUS {
   OPEN,
   IN_PROGRESS,
   DONE,

@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { Config, JsonDB } from 'node-json-db';
-import { TaskDto } from './dto';
+import { TASKSTATUS, TaskDto } from './dto';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
@@ -26,6 +26,7 @@ export class TaskService {
     const newTask = {
       id: uuidv4(),
       ...task,
+      status: TASKSTATUS.OPEN,
     };
     const hasCategory = categoryData.find(
       (category) => category.id === newTask.categoryId,
