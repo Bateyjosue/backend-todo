@@ -12,6 +12,6 @@ export class CategoryController {
 
   @Post()
   addCategory(@Body() category: Category) {
-    this.category.addCategory(category);
+    return this.category.addCategory(category);
   }
 }
