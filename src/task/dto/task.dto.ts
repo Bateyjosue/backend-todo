@@ -7,6 +7,8 @@ enum TASKSTATUS {
 }
 
 export class TaskDto {
+  id: string;
+
   @IsNotEmpty()
   title: string;
 
