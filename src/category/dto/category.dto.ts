@@ -1,9 +1,11 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 
 export class Category {
-  @IsInt()
+  @IsNotEmpty()
+  @IsString()
   id: number;
 
+  @IsNotEmpty()
   @IsString()
   name: string;
 }
