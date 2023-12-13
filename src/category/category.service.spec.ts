@@ -15,4 +15,11 @@ describe('CategoryService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('get all categories', async () => {
+    const category = await service.db.getData('/db/category/data/');
+
+    const data = await service.getAllCategories();
+    expect(data).toBe(category);
+  });
 });
