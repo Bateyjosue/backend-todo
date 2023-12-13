@@ -52,10 +52,15 @@ export class TaskService {
     }
   }
 
-  // async deleteTask(id) {
-  //   const tasks: TaskDto[] = await this.db.getData('/db/task/data/');
+  async deleteTask(id) {
+    const tasks: TaskDto[] = await this.databaseRepository.findAll(this.path);
 
-  //   const index = tasks.findIndex((task) => task.id === id.id);
-  //   return await this.db.delete(`/db/task/data[${index}]`);
-  // }
+    const index = tasks.findIndex((task) => task.id === id);
+
+    if (index === -1) {
+      throw new NotFoundException('Task not found');
+    }
+    await this.databaseRepository.delete(this.path, index);
+    return tasks;
+  }
 }

@@ -20,8 +20,8 @@ export class TaskController {
     return this.tasksService.addTask(task);
   }
 
-  // @Delete(':id')
-  // deleteTask(@Param() id: string) {
-  //   return this.tasksService.deleteTask(id);
-  // }
+  @Delete(':id')
+  deleteTask(@Param() id: { id: string }) {
+    return this.tasksService.deleteTask(id.id);
+  }
 }
