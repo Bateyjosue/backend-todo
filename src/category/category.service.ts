@@ -13,10 +13,6 @@ export class CategoryService {
   constructor(private databaseRepository: DatabaseRepository) {
     this.path = 'category';
   }
-  // async getAllCategories(): Promise<Category[]> {
-  //   const data: Category[] = await this.db.getData('/db/category/data/');
-  //   return data;
-  // }
 
   async findAll() {
     return await this.databaseRepository.findAll(this.path);
@@ -50,17 +46,22 @@ export class CategoryService {
   }
 
   async deleteCategory(id) {
-    // const tasks = await this.db.getData('/db/task/data/');
-    // const categories = await this.db.getData('/db/category/data/');
-    // const hasCategory = tasks.find((category) => category.categoryId === id.id);
-    // if (hasCategory) {
-    //   throw new ConflictException('This category has tasks attached to it');
-    // }
+    const tasks = await this.databaseRepository.findAll('task');
+    const categories = await this.databaseRepository.findAll(this.path);
+    const hasCategory = tasks.find((category) => category.categoryId === id);
 
-    // const index = categories.findIndex(
-    //   (category: { id: string; name: string }) => category.id === id.id,
-    // );
-    // this.db.delete(`/db/category/data[${index}]`);
+    if (hasCategory) {
+      throw new ConflictException('This category has tasks attached to it');
+    }
+
+    const index = categories.findIndex(
+      (category: { id: string; name: string }) => category.id === id,
+    );
+
+    if (index === -1) {
+      throw new NotFoundException('Category not found');
+    }
+    this.databaseRepository.delete(this.path, index);
     return id;
   }
 }

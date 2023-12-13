@@ -21,7 +21,7 @@ export class DatabaseRepository {
     return this.db.getData(`/db/${path}/data[${payload}]`)
   }
 
-  // detele(payload) {
-  //   return this.db.delete(`/db/${this.path}/data[${payload}]`);
-  // }
+  delete(path, payload) {
+    return this.db.delete(`/db/${path}/data[${payload}]`);
+  }
 }

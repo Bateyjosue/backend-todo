@@ -41,7 +41,7 @@ export class TaskService {
     );
 
     if (!hasCategory) {
-      throw new ForbiddenException('Invalid Category');
+      throw new NotFoundException('Invalid Category');
     }
 
     try {
