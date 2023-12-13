@@ -15,13 +15,13 @@ export class TaskController {
     return this.tasksService.getTask(id);
   }
 
-  @Post()
-  addTask(@Body() task: TaskDto) {
-    return this.tasksService.addTask(task);
-  }
+  // @Post()
+  // addTask(@Body() task: TaskDto) {
+  //   return this.tasksService.addTask(task);
+  // }
 
-  @Delete(':id')
-  deleteTask(@Param() id: string) {
-    return this.tasksService.deleteTask(id);
-  }
+  // @Delete(':id')
+  // deleteTask(@Param() id: string) {
+  //   return this.tasksService.deleteTask(id);
+  // }
 }
