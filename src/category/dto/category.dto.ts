@@ -5,7 +5,5 @@ export class Category {
   @IsString()
   name: string;
 
-  @IsNotEmpty()
-  @IsString()
   id?: string;
 }

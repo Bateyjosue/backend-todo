@@ -1,11 +1,8 @@
 import {
   ConflictException,
-  ForbiddenException,
   Injectable,
-  InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { Config, JsonDB } from 'node-json-db';
 import { Category } from './dto';
 import { v4 as uuidv4 } from 'uuid';
 import { DatabaseRepository } from 'src/database.repository';
@@ -42,7 +39,10 @@ export class CategoryService {
         throw new ConflictException('Category exists');
       }
 
-      await this.databaseRepository.create(this.path, category);
+      await this.databaseRepository.create(this.path, {
+        id: uuidv4(),
+        ...category,
+      });
       return category;
     } catch (err) {
       return err;
