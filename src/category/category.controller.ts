@@ -4,8 +4,7 @@ import { Category } from './dto';
 
 @Controller('categories')
 export class CategoryController {
-  constructor(private category: CategoryService) {
-  }
+  constructor(private category: CategoryService) {}
 
   // @Post()
   // addCategory(@Body() category: Category) {
@@ -20,6 +19,11 @@ export class CategoryController {
   @Get()
   findAll() {
     return this.category.findAll();
+  }
+
+  @Get(':id')
+  findById(@Param() id: { id: string }) {
+    return this.category.findOne(id.id);
   }
 
   @Post()

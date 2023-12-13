@@ -3,6 +3,7 @@ import {
   ForbiddenException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import { Config, JsonDB } from 'node-json-db';
 import { Category } from './dto';
@@ -22,6 +23,15 @@ export class CategoryService {
 
   async findAll() {
     return await this.databaseRepository.findAll(this.path);
+  }
+
+  async findOne(payload) {
+    const categories = await this.findAll();
+    const cat = categories.findIndex((catego) => catego.id === payload);
+    if (cat === -1) {
+      return new NotFoundException('Category not found');
+    }
+    return await this.databaseRepository.findOne(this.path, cat);
   }
 
   async addCategory(category: Category) {
