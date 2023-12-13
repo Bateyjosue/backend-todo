@@ -4,19 +4,26 @@ import { Category } from './dto';
 
 @Controller('categories')
 export class CategoryController {
-  constructor(private category: CategoryService) {}
+  constructor(private category: CategoryService) {
+  }
+
+  // @Post()
+  // addCategory(@Body() category: Category) {
+  //   return this.category.addCategory(category);
+  // }
+
+  // @Delete(':id')
+  // deleteCategory(@Param() id: { id: string }) {
+  //   return this.category.deleteCategory(id);
+  // }
+
   @Get()
-  getAllCategories() {
-    return this.category.getAllCategories();
+  findAll() {
+    return this.category.findAll();
   }
 
   @Post()
-  addCategory(@Body() category: Category) {
+  create(@Body() category: Category) {
     return this.category.addCategory(category);
-  }
-
-  @Delete(':id')
-  deleteCategory(@Param() id: { id: string }) {
-    return this.category.deleteCategory(id);
   }
 }
