@@ -49,18 +49,18 @@ export class CategoryService {
     }
   }
 
-  // async deleteCategory(id: { id: string }) {
-  //   const tasks = await this.db.getData('/db/task/data/');
-  //   const categories = await this.db.getData('/db/category/data/');
-  //   const hasCategory = tasks.find((category) => category.categoryId === id.id);
-  //   if (hasCategory) {
-  //     throw new ConflictException('This category has tasks attached to it');
-  //   }
+  async deleteCategory(id) {
+    // const tasks = await this.db.getData('/db/task/data/');
+    // const categories = await this.db.getData('/db/category/data/');
+    // const hasCategory = tasks.find((category) => category.categoryId === id.id);
+    // if (hasCategory) {
+    //   throw new ConflictException('This category has tasks attached to it');
+    // }
 
-  //   const index = categories.findIndex(
-  //     (category: { id: string; name: string }) => category.id === id.id,
-  //   );
-  //   this.db.delete(`/db/category/data[${index}]`);
-  //   return id;
-  // }
+    // const index = categories.findIndex(
+    //   (category: { id: string; name: string }) => category.id === id.id,
+    // );
+    // this.db.delete(`/db/category/data[${index}]`);
+    return id;
+  }
 }

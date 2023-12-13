@@ -30,4 +30,9 @@ export class CategoryController {
   create(@Body() category: Category) {
     return this.category.addCategory(category);
   }
+
+  @Delete(':id')
+  deleteCategory(@Param() id: { id: string }) {
+    return this.category.deleteCategory(id.id);
+  }
 }
