@@ -1,9 +1,9 @@
 import { IsNotEmpty } from 'class-validator';
 
-export enum TASKSTATUS {
-  OPEN,
-  IN_PROGRESS,
-  DONE,
+export enum TASK_STATUS {
+  OPEN = 'OPEN',
+  IN_PROGRESS = 'IN_PROGRESS',
+  DONE = 'DONE',
 }
 
 export class TaskDto {
@@ -11,9 +11,6 @@ export class TaskDto {
 
   @IsNotEmpty()
   title: string;
-
-  @IsNotEmpty()
-  status: TASKSTATUS;
 
   @IsNotEmpty()
   description: string;
