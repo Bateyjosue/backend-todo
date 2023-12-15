@@ -5,12 +5,12 @@ import {
 } from '@nestjs/common';
 import { Category } from './dto';
 import { v4 as uuidv4 } from 'uuid';
-import { DatabaseRepository } from 'src/database.repository';
+import { DatabaseRepository } from '../database.repository';
 
 @Injectable()
 export class CategoryService {
   path: string;
-  constructor(private databaseRepository: DatabaseRepository) {
+  constructor(private readonly databaseRepository: DatabaseRepository) {
     this.path = 'category';
   }
 
