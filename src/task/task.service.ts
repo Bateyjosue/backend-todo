@@ -1,12 +1,11 @@
 import {
-  ForbiddenException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { TASK_STATUS, TaskDto } from './dto';
 import { v4 as uuidv4 } from 'uuid';
-import { DatabaseRepository } from 'src/database.repository';
+import { DatabaseRepository } from '../database.repository';
 
 @Injectable()
 export class TaskService {

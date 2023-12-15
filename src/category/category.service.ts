@@ -28,7 +28,7 @@ export class CategoryService {
   }
 
   async addCategory(category: Category) {
-    const categories = await this.findAll();
+    const categories = (await this.findAll()) || [];
     const cat = categories.map((catego) => catego.name);
     try {
       if (cat.includes(category.name)) {
