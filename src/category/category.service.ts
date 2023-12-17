@@ -14,7 +14,7 @@ export class CategoryService {
     this.path = 'category';
   }
 
-  async findAll() {
+  async findAll(): Promise<Category[]> {
     return await this.databaseRepository.findAll(this.path);
   }
 
